@@ -16,12 +16,17 @@
 
 
 
-1η επιλογή:							2η επιλογή:
+1η επιλογή:							
 
-User: dimitris							User: kostas		
+User: dimitris									
 
-Password: 123456						Password: abc123
+Password: 123456			
 
+2η επιλογή:
+
+User: kostas
+
+Password: abc123
 
 
 Εφόσον καταχωρήσετε τα παραπάνω credentials, είστε και επισήμως πελάτης της εταιρείας!
@@ -125,4 +130,5 @@ user:	dimitris						user: kostas
 
 
 &nbsp;
+
 
