@@ -1,0 +1,52 @@
+@startuml
+
+class User
+
+class Driver {
+  +name: str
+  +date_of_birth: str
+  +email: str
+  +AFM: str
+  +area: str
+  +telephone: str
+}
+
+class Contract {
+  +policy_id: int
+  +plate_number: int
+  +horsepower: int
+  +ins_start_date: int
+  +ins_end_date: int
+  +pay_amount: int
+}
+
+class Accident_report {
+  +area: str
+  +date: int
+  +time: int
+  +postal_code: int
+  +other_ins: str
+  +street: int
+}
+
+class Rantevu
+
+class Repair_shop {
+  +shop_name
+  +street
+  +area
+  +postal_code
+  +owner_name
+  +telephone
+  +licence_number(ID)
+}
+
+
+User "1" -- "1" Driver
+Driver "1" -- "0..*" Accident_report
+Accident_report "0..*" -- "1" Contract
+Rantevu "0..*" -- "1" Repair_shop
+Driver "1" -- "0..*" Rantevu
+Driver "1" -- "1..*" Contract
+
+@enduml 
