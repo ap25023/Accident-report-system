@@ -4,10 +4,10 @@ from models import Driver, InsurancePolicy, AccidentReport, RepairShop
 
 class InsuranceSystem:
     def __init__(self):
-        self.drivers: list[Driver] = []  
-        self.policies: list[InsurancePolicy] = [] 
-        self.reports: list[AccidentReport] = []  
-        self.repair_shops: list[RepairShop] = []  
+        self.drivers = []  
+        self.policies = [] 
+        self.reports = []  
+        self.repair_shops = []  
 
         self._next_driver_id = 1
         self._next_report_id = 1
@@ -29,9 +29,9 @@ class InsuranceSystem:
         self.policies.extend([policy1, policy2])
 
     
-        shop1 = RepairShop(1, "MOTODROMOS", "Μεσογείων 161", "Αθήνα", "11526", "Δημήτρης Γούναρης", "2107101882", "motodromos@gmail.com", "1")
-        shop2 = RepairShop(2, "SmartService", "Βενιζέλου 24", "Θεσσαλονίκη", "54628", "Νίκος Γεωργίου", "23104008474", "smartservice@gmail.com", "2")
-        shop3 = RepairShop(3, "PatrasAuto", "Πανεπιστημίου", "Πάτρα", "26443", "Κώστας Τσιμπούκης", "2105556666", "patraauto@gmail.com", "3")
+        shop1 = RepairShop(1, "MOTODROMOS", "Μεσογείων 161", "Αθηνα", "11526", "Δημήτρης Γούναρης", "2107101882", "motodromos@gmail.com", "1")
+        shop2 = RepairShop(2, "SmartService", "Βενιζέλου 24", "Θεσσαλονικη", "54628", "Νίκος Γεωργίου", "23104008474", "smartservice@gmail.com", "2")
+        shop3 = RepairShop(3, "PatrasAuto", "Πανεπιστημίου", "Πατρα", "26443", "Κώστας Τσιμπούκης", "2105556666", "patraauto@gmail.com", "3")
         self.repair_shops.extend([shop1, shop2, shop3])
 
     def authenticate_driver(self, username: str, password: str) -> Driver | None:
@@ -65,7 +65,12 @@ class InsuranceSystem:
                 return [r for r in self.reports if r.policy.driver == driver]
 
     def search_repair_shops(self, area: str) -> list[RepairShop]:
-        return [s for s in self.repair_shops if area.lower() in s.area.lower()]
+        input_area = area.lower()
+        result = []
+        for s in self.repair_shops:           
+            if input_area in s.area.lower():
+                result.append(s)
+        return result
 
     def find_shop_by_id(self, shop_id: int) -> RepairShop | None:
         for s in self.repair_shops:

@@ -53,13 +53,19 @@ def main():
             area = input("Περιοχή για αναζήτηση συνεργείου: ")
             shops = system.search_repair_shops(area)
             if shops:
-                print("\nΔιαθέσιμα συνεργεία:")
+                print("\nΔιαθέσιμα συνεργεία στην περιοχή σας:")
                 for shop in shops:
                     print(shop)
+                    
                 try:
                     shop_id = int(input("Επιλογή id συνεργείου: "))
                     shop = system.find_shop_by_id(shop_id)
+                    
+                    if not shop:
+                        print("Μη έγκυρο id συνεργείου.")   
+                        continue
                 
+                    report_id = int(input("Επιλογή id δήλωσης για ραντεβού: "))            
                     result = system.choose_repair_shop(int(input("Επιλογή id δήλωσης για ραντεβού: ")), shop_id)
                 
                     if result:
@@ -69,8 +75,11 @@ def main():
                     
                     else:
                         print("Μη έγκυρο id συνεργείου ή δήλωσης.")     
+                        
                 except ValueError:
                     print("Μη έγκυρη ID συνεργείου ή δήλωσης.")
+            else :
+                    print("Δεν βρέθηκαν συνεργεία στην περιοχή σας.")
                     
             
         elif choice == "4":
