@@ -66,7 +66,7 @@ def main():
                         continue
                 
                     report_id = int(input("Επιλογή id δήλωσης για ραντεβού: "))            
-                    result = system.choose_repair_shop(int(input("Επιλογή id δήλωσης για ραντεβού: ")), shop_id)
+                    result = system.choose_repair_shop(report_id, shop_id)
                 
                     if result:
                         print(f"Το ραντεβού στο {shop.name} έχει καταχωρηθεί.")
